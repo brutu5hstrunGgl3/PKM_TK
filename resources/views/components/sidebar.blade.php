@@ -25,6 +25,10 @@
                         <a class="nav-link"
                             href="{{ route('body.index') }}">Content Body</a>
                     </li>
+                     <li class=>
+                        <a class="nav-link"
+                            href="{{ route('logo.index') }}">Logo</a>
+                    </li>
                     
                 </ul>
             </li>

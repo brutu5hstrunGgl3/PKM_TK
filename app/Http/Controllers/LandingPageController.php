@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Content;
 use App\Models\Body;
+use App\Models\Setting;
 
 class LandingPageController extends Controller
 {
@@ -19,8 +20,10 @@ class LandingPageController extends Controller
         // Ambil data terbaru dari tabel bodies
         $body = Body::latest()->first();
 
+        $setting = Setting::first();
+
         // Kirim keduanya ke view
-        return view('landing.landing', compact('content', 'body'));
+        return view('landing.landing', compact('content', 'body','setting'));
          
     }
 

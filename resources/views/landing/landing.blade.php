@@ -64,9 +64,15 @@
     <div class="container px-0">
         <nav class="navbar navbar-expand-xl navbar-light bg-light py-3">
             <!-- Logo -->
-            <a href="index.html" class="navbar-brand d-flex align-items-center">
-                <h1 class="text-primary display-6 mb-0">Baby<span class="text-secondary">Care</span></h1>
-            </a>
+          <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
+   @if(isset($logo) && $logo->logo)
+                <img src="{{ asset('storage/' . $logo->logo) }}" 
+                    alt="logo"
+                    class="img-fluid mb-4 mx-auto d-block"
+                    style="max-height: 80px;">
+                     @endif  
+</a>
+
 
             <!-- Toggle Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -158,7 +164,14 @@
         <div class="container position-relative text-white z-3 wow fadeIn" data-wow-delay="0.3s">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h1 class="display-4 fw-bold mb-3 text-primary">
+            {{-- ✅ Logo --}}
+                @if(isset($logo) && $logo->logo)
+                <img src="{{ asset('storage/' . $logo->logo) }}" 
+                    alt="Logo Ponpes"
+                    class="img-fluid mb-4 mx-auto d-block"
+                    style="max-height: 120px;">
+                     @endif       
+                   <h1 class="display-4 fw-bold mb-3 text-primary">
                         {{ $content->title ?? 'We Care Your Baby' }}
                     </h1>
                     <h2 class="display-6 mb-4 text-white">

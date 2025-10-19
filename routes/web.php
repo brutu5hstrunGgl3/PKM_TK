@@ -5,9 +5,14 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\BodyController;
+use App\Http\Controllers\LogoController;
+
 use App\Models\Content;
 use App\Models\Menu;
 use App\Models\Body;
+use App\Models\Setting;
+use App\Models\Logo;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,9 +38,10 @@ Route::get('blog', function () {
 Route::get('/', function () {
     $content = Content::latest()->first();
     $menus = Menu::orderBy('order')->get();
-      $body = Body::latest()->first();
+    $body = Body::latest()->first();
+    $logo = Setting::first();
 
-    return view('landing.landing', compact('content', 'menus','body'));
+    return view('landing.landing', compact('content', 'menus','body','logo'));
 })->name('landing');
 
 // Admin CMS (bisa ditambah middleware auth)
@@ -50,5 +56,10 @@ Route::middleware(['auth'])->group(function () {
  Route::resource('content', ContentController::class);
         Route::resource('menu', MenuController::class);   
         Route::resource('body', BodyController::class);
+
+       
+    Route::get('logo', [LogoController::class, 'index'])->name('logo.index');
+    Route::post('logo/update', [LogoController::class, 'update'])->name('logo.update');
+
 
 });
