@@ -61,8 +61,8 @@
      
 
     <!-- Navbar -->
-    <div class="container px-0">
-        <nav class="navbar navbar-expand-xl navbar-light bg-light py-3">
+    <div class="container px-10">
+        <nav class="navbar navbar-expand-xl navbar-light bg-light py-3 ">
             <!-- Logo -->
           <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
    @if(isset($logo) && $logo->logo)
@@ -167,14 +167,14 @@
             {{-- ✅ Logo --}}
                 @if(isset($logo) && $logo->logo)
                 <img src="{{ asset('storage/' . $logo->logo) }}" 
-                    alt="Logo Ponpes"
+                    alt="Logo"
                     class="img-fluid mb-4 mx-auto d-block"
                     style="max-height: 120px;">
                      @endif       
-                   <h1 class="display-4 fw-bold mb-3 text-primary">
+                   <h1 class="display-4 fw-bold mb-3 gradient-text">
                         {{ $content->title ?? 'We Care Your Baby' }}
                     </h1>
-                    <h2 class="display-6 mb-4 text-white">
+                    <h2 class="display-6  fw-bold mb-3 text-white">
                         {{ $content->subtitle ?? '' }}
                     </h2>
                     <p class="lead mb-5 text-light">
@@ -208,7 +208,7 @@
                         <h1 class="text-dark mb-4 display-5">  {{ $body->judul ?? $content->title ?? 'We Learn Smart Way To Build Bright Future For Your Children' }}</h1>
                         <p class="text-dark mb-4">  {{ $body->content ?? $content->description ?? 'Lorem Ipsum is simply dummy text...' }}
                         </p>
-                         <a href="{{ route('blog')}}" class="btn btn-primary px-5 py-3 btn-border-radius">Baca Selanjut nya</a>
+                         <a href="{{ route('blog')}}" class="btn btn-primary px-5 py-3 btn-border-radius">Daftar</a>
                         <div class="row mb-4">
                           
                             </div>

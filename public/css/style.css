@@ -630,6 +630,12 @@ h6,
 .team .team-item:hover .team-icon a.share-link {
     opacity: 1;
 }
+.gradient-text {
+  background: linear-gradient(90deg, #ff9a9e, #f6416c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 .team .team-item .team-content,
 .team .team-item .team-content h4,

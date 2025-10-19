@@ -6,6 +6,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\BodyController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\Admin\EventController;
 
 use App\Models\Content;
 use App\Models\Menu;
@@ -60,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
        
     Route::get('logo', [LogoController::class, 'index'])->name('logo.index');
     Route::post('logo/update', [LogoController::class, 'update'])->name('logo.update');
-
+      Route::resource('events', EventController::class);
+    
 
 });

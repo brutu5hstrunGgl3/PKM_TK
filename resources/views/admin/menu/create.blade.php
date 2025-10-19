@@ -10,8 +10,12 @@
         <input type="text" name="name" class="w-full border p-2 rounded mb-4" required>
 
         <label class="block mb-2 font-semibold">URL / Link</label>
-        <input type="text" name="url" class="w-full border p-2 rounded mb-4" required>
-
+            <select name="url" class="w-full border p-2 rounded mb-4" required>
+        <option value="">-- Pilih URL --</option>
+        <option value="{{ route('landing') }}">Landing Page</option>
+        <option value="">Tentang Kami</option>
+        <option value="">Kontak</option>
+        </select>
         <label class="block mb-2 font-semibold">Urutan</label>
         <input type="number" name="order" class="w-full border p-2 rounded mb-4">
 
