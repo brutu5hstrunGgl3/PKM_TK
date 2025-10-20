@@ -13,6 +13,7 @@ use App\Models\Menu;
 use App\Models\Body;
 use App\Models\Setting;
 use App\Models\Logo;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +42,11 @@ Route::get('/', function () {
     $menus = Menu::orderBy('order')->get();
     $body = Body::latest()->first();
     $logo = Setting::first();
+    $events= Event::where('is_published', true)
+        ->latest()
+        ->get();
 
-    return view('landing.landing', compact('content', 'menus','body','logo'));
+    return view('landing.landing', compact('content', 'menus','body','logo','events'));
 })->name('landing');
 
 // Admin CMS (bisa ditambah middleware auth)
@@ -61,7 +65,8 @@ Route::middleware(['auth'])->group(function () {
        
     Route::get('logo', [LogoController::class, 'index'])->name('logo.index');
     Route::post('logo/update', [LogoController::class, 'update'])->name('logo.update');
-      Route::resource('events', EventController::class);
-    
+    Route::resource('events', EventController::class)->except(['show']);
+
+   
 
 });

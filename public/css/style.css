@@ -554,7 +554,7 @@ h6,
 }
 
 .events .events-item:hover .events-text a.h4 {
-    color: var(--bs-primary) !important;
+    /* color: var() !important; */
 }
 
 .events .events-item:hover .events-img img {

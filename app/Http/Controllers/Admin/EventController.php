@@ -68,7 +68,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            
             'date' => 'required|string|max:50',
             'time' => 'nullable|string|max:50',
             'location' => 'nullable|string|max:255',
@@ -92,6 +92,8 @@ class EventController extends Controller
         return redirect()->route('events.index')
             ->with('success', 'Event berhasil diperbarui!');
     }
+
+
 
     /**
      * Hapus event
