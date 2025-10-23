@@ -7,6 +7,7 @@ use App\Models\Content;
 use App\Models\Body;
 use App\Models\Setting;
 use App\Models\Event;
+use App\Models\Teams;
 
 class LandingPageController extends Controller
 {
@@ -23,13 +24,14 @@ class LandingPageController extends Controller
 
         $setting = Setting::first();
 
+
          $events = Event::where('is_published', true)
         ->latest() // kalau mau batasi 3 event terbaru, bisa dihapus kalau mau semua
         ->get();
-
+        $teams = Teams::latest()->get();
 
         // Kirim keduanya ke view
-        return view('landing.landing', compact('content', 'body','setting','events'));
+        return view('landing.landing', compact('content', 'body','setting','events','teams'));
          
     }
 
