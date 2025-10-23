@@ -42,82 +42,56 @@
 
 
         <!-- Navbar start -->
-       <div class="container-fluid border-bottom bg-light wow fadeIn" data-wow-delay="0.1s">
-    <!-- Topbar -->
-    <!-- <div class="container topbar bg-primary d-none d-lg-block py-2" style="border-radius: 0 40px;">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="top-info ps-2">
-                <small class="me-3">
-                    <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
-                    <a href="#" class="text-white">123 Street, New York</a>
-                </small>
-                <small class="me-3">
-                    <i class="fas fa-envelope me-2 text-secondary"></i>
-                    <a href="#" class="text-white">Email@Example.com</a>
-                </small>
-            </div>
+     <!-- Navbar Start -->
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top py-2">
+  <div class="container">
+    
+    <!-- Logo -->
+    <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
+        @if(isset($logo) && $logo->logo)
+            <img src="{{ asset('storage/' . $logo->logo) }}" 
+                 alt="Logo"
+                 style="max-height: 60px;">
+        @else
+            <span class="fw-bold text-primary fs-4">BabyCare</span>
+        @endif
+    </a>
+
+    <!-- Toggle button (mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="fa fa-bars text-primary"></span>
+    </button>
+
+    <!-- Navbar Menu -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        @forelse($menus as $menu)
+          <li class="nav-item">
+            <a href="{{ $menu->url }}" class="nav-link fw-medium text-dark px-3">{{ $menu->name }}</a>
+          </li>
+        @empty
+          <li class="nav-item">
+            <span class="nav-link text-muted fst-italic">Belum ada menu</span>
+          </li>
+        @endforelse
+      </ul>
+
+      <!-- Contact -->
+      <div class="d-flex align-items-center">
+        <i class="fa fa-phone-alt text-primary me-2"></i>
+        <div class="d-flex flex-column">
+          <small class="text-muted">Hubungi kami</small>
+          <a href="#" class="text-secondary text-decoration-none fw-semibold">(+012) 345 6789</a>
         </div>
-    </div> -->
-     
-
-    <!-- Navbar -->
-    <div class="container px-10">
-        <nav class="navbar navbar-expand-xl navbar-light bg-light py-3 ">
-            <!-- Logo -->
-          <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
-   @if(isset($logo) && $logo->logo)
-                <img src="{{ asset('storage/' . $logo->logo) }}" 
-                    alt="logo"
-                    class="img-fluid mb-4 mx-auto d-block"
-                    style="max-height: 80px;">
-                     @endif  
-</a>
-
-
-            <!-- Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars text-primary"></span>
-            </button>
-
-            <!-- Menu -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
-                <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
-                    @forelse($menus as $menu)
-                        <li class="nav-item">
-                            <a href="{{ $menu->url }}" class="nav-link text-dark fw-medium px-3 hover-text-primary">
-                                {{ $menu->name }}
-                            </a>
-                        </li>
-                    @empty
-                        <li class="nav-item">
-                            <a href="#" class="nav-link text-muted fst-italic">Belum ada menu</a>
-                        </li>
-                    @endforelse
-                </ul>
-               
-
-                <!-- Contact Info -->
-                <div class="d-flex align-items-center ms-xl-4">
-                    <a href="#" class="position-relative me-3 wow tada" data-wow-delay=".9s">
-                        <i class="fa fa-phone-alt text-primary fa-2x"></i>
-                        <div class="position-absolute" style="top: -7px; left: 20px;">
-                            <i class="fa fa-comment-dots text-secondary"></i>
-                        </div>
-                    </a>
-                    <div class="d-flex flex-column pe-3 border-end border-primary">
-                        <span class="text-primary">Have any questions?</span>
-                        <a href="#" class="text-secondary text-decoration-none">Free: +0123 456 7890</a>
-                    </div>
-                </div>
-
-                <!-- Search Button -->
-                <button class="btn btn-primary btn-md-square rounded-circle ms-3" data-bs-toggle="modal" data-bs-target="#searchModal">
-                    <i class="fas fa-search text-white"></i>
-                </button>
-            </div>
-        </nav>
+      </div>
     </div>
-</div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Navbar End -->
+
 
         <!-- Navbar End -->
 
@@ -256,7 +230,7 @@
             <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                 Kegiatan Belajar
             </h4>
-            <h1 class="mb-5 display-3">Our Upcoming Events</h1>
+            <h1 class="mb-5 display-3">Jadwal kegiatan Event Siswa</h1>
         </div>
 
         <div class="row g-5 justify-content-center">
