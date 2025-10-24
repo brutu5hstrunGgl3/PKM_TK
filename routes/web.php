@@ -8,6 +8,7 @@ use App\Http\Controllers\BodyController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\ContactController;
 
 use App\Models\Content;
 use App\Models\Menu;
@@ -73,6 +74,7 @@ Route::middleware('admin.area')->group(function () {
 
     Route::resource('events', EventController::class)->except(['show']);
     Route::resource( 'teams', TeamsController::class );
+    Route::resource('contact', ContactController::class );
 });
 
 

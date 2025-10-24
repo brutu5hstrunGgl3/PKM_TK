@@ -37,6 +37,10 @@
                         <a class="nav-link"
                             href="{{ route('teams.index') }}">Teams</a>
                     </li>
+                    <li class=>
+                        <a class="nav-link"
+                            href="{{ route('contact.index') }}">Contact</a>
+                    </li>
                 </ul>
             </li>
     </aside>
