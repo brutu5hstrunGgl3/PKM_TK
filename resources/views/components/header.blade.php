@@ -49,15 +49,9 @@
         </div>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#"
-                data-toggle="dropdown"
-                class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+        
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Messages
-                    <div class="float-right">
-                        <a href="#">Mark All As Read</a>
-                    </div>
-                </div>
+                
                 <div class="dropdown-list-content dropdown-list-message">
                     <a href="#"
                         class="dropdown-item dropdown-item-unread">
@@ -68,9 +62,7 @@
                             <div class="is-online"></div>
                         </div>
                         <div class="dropdown-item-desc">
-                            <b>Kusnaedi</b>
-                            <p>Hello, Bro!</p>
-                            <div class="time">10 Hours Ago</div>
+                           
                         </div>
                     </a>
                     <a href="#"
@@ -81,9 +73,7 @@
                                 class="rounded-circle">
                         </div>
                         <div class="dropdown-item-desc">
-                            <b>Dedik Sugiharto</b>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                            <div class="time">12 Hours Ago</div>
+                            
                         </div>
                     </a>
                     <a href="#"
@@ -95,9 +85,7 @@
                             <div class="is-online"></div>
                         </div>
                         <div class="dropdown-item-desc">
-                            <b>Agung Ardiansyah</b>
-                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <div class="time">12 Hours Ago</div>
+                            
                         </div>
                     </a>
                     <a href="#"
@@ -107,12 +95,7 @@
                                 src="{{ asset('dashboard/img/avatar/avatar-4.png') }}"
                                 class="rounded-circle">
                         </div>
-                        <div class="dropdown-item-desc">
-                            <b>Ardian Rahardiansyah</b>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
-                            <div class="time">16 Hours Ago</div>
-                        </div>
-                    </a>
+                       
                     <a href="#"
                         class="dropdown-item">
                         <div class="dropdown-item-avatar">
@@ -132,15 +115,9 @@
                 </div>
             </div>
         </li>
-        <li class="dropdown dropdown-list-toggle"><a href="#"
-                data-toggle="dropdown"
-                class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+        <li class="dropdown dropdown-list-toggle">
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Notifications
-                    <div class="float-right">
-                        <a href="#">Mark All As Read</a>
-                    </div>
-                </div>
+                
                 <div class="dropdown-list-content dropdown-list-icons">
                     <a href="#"
                         class="dropdown-item dropdown-item-unread">

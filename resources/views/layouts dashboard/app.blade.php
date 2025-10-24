@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
         name="viewport">
-    <title>@yield('title') &mdash; Stisla</title>
+    <title>@yield('title') &mdash; Tk Harapan Ibu</title>
+    <title>Tk Harapan Ibu</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="icon"  href="{{ asset('dashboard/img/tk.png.png') }}" type="image/x-icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet"

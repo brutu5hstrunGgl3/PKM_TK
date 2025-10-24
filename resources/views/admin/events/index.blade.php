@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sistem Informasi Cms </h1>
+                <h1>Kegiatan </h1>
                
                 <div class="section-header-breadcrumb">
                    
@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header">
                            
-                                <h4>All Posts</h4>
+                                <h4>Kegiatan</h4>
                             </div>
                            
                                 <div class="card-body">
@@ -45,7 +45,7 @@
   <div class="section-body">
     <div class="card">
       <div class="card-header">
-        <h4>Data Event</h4>
+        <h4>Data Kegiatan</h4>
       </div>
       <div class="card-body">
         @if (session('success'))

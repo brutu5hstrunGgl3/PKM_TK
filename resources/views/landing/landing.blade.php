@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BabyCare - Daycare Website Template</title>
+    <title>Tk Harapan Ibu</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="icon"  href="{{ asset('storage/' . e($logo->logo)) }}" type="image/x-icon">
+    
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +35,7 @@
             min-height: 400px;
             background: linear-gradient(rgba(255, 255, 255, 0.1),
                     rgba(255, 255, 255, 0.1)),
-                url('{{ asset('storage/' . ($body->image ?? 'default.jpg')) }}');
+            url('{{ asset('storage/' . ($body->image ?? 'default.jpg')) }}');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -154,9 +156,9 @@
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                    Kegiatan Belajar
+                    Kegiatan 
                 </h4>
-                <h1 class="mb-5 display-3">Jadwal Kegiatan Event Siswa</h1>
+                <h1 class="mb-5 display-3">Jadwal Kegiatan </h1>
             </div>
 
             <div class="row g-5 justify-content-center">

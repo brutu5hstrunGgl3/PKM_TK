@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sistem Informasi Cms </h1>
+                <h1>Teams </h1>
                
                 <div class="section-header-breadcrumb">
                    
@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header">
                            
-                                <h4>All Posts</h4>
+                                <h4>Team</h4>
                             </div>
                            
                                 <div class="card-body">

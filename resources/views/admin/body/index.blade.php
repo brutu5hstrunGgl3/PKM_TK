@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sistem Informasi Cms </h1>
+                <h1>Konten </h1>
                
                 <div class="section-header-breadcrumb">
                    
@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header">
                            
-                                <h4>All Posts</h4>
+                                <h4>Konten</h4>
                             </div>
                            
                                 <div class="card-body">
@@ -48,9 +48,7 @@
                                                 class="form-control"
                                                 placeholder="Search" name="jenis_paket">
                                                 
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                                            </div>
+                                            
                                         </div>
                                     </form>
                                 </div>

@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Fortify;
 
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -50,6 +51,16 @@ class FortifyServiceProvider extends ServiceProvider
     Fortify::loginView(function () {
         return view('auth.auth-login2');
     });
+     Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.auth-forgot-password');
+        });
+    Fortify::resetPasswordView(function( $request ) {
+            return view('auth.auth-reset-password', ['request' => request()]);  
+        });
+
+    Fortify::verifyEmailView(function () {
+            return view('auth.auth-verify-email');
+        });
     
  
     // ...

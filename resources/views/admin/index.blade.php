@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Sistem Informasi CMS </h1>
+                <h1>Header </h1>
                
                 <div class="section-header-breadcrumb">
                    
@@ -28,7 +28,7 @@
                         <div class="card">
                             <div class="card-header">
                            
-                                <h4>All Posts</h4>
+                                <h4>Header</h4>
                             </div>
                            
                                 <div class="card-body">
@@ -44,12 +44,12 @@
                                 <div class="float-right">
                                     <form method="GET" action="">
                                         <div class="input-group">
-                                            <input type="text"
+                                            <!-- <input type="text"
                                                 class="form-control"
-                                                placeholder="Search" name="jenis_paket">
+                                                placeholder="Search" name="jenis_paket"> -->
                                                 
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                            <!-- <div class="input-group-append">
+                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button> -->
                                             </div>
                                         </div>
                                     </form>

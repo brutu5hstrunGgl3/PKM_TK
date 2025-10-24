@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash; Stisla</title>
+    <title>Login &mdash; Tk Harapan Ibu</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('dashboard/library/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -91,7 +91,7 @@
                             </div>
 
                             <div class="form-group text-right">
-                                <a href="auth-forgot-password.html" class="float-left mt-3">Forgot Password?</a>
+                                <a href="{{ route('password.request') }}" class="float-left mt-3">Forgot Password?</a>
                                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">Login</button>
                             </div>
                         </form>
