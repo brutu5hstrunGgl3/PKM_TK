@@ -64,8 +64,6 @@
                                             <th>Judul</th>
                                             <th>Deskripsi</th>
                                             <th>Image</th>
-                                            <th>Created At</th>
-                                            <th>Updated At</th>
                                             <th>Aksi</th>
                                            
                                         </tr>

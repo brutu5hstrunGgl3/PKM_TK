@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Infromasi;
 use Illuminate\Http\Request;
 use App\Models\Content;
 use App\Models\Body;
-use App\Models\Contact;
 use App\Models\Setting;
 use App\Models\Event;
 use App\Models\Teams;
+use App\Models\Contact;
 
-class LandingPageController extends Controller
+
+class InformasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +36,7 @@ class LandingPageController extends Controller
         $contact = Contact::first();
 
         // Kirim keduanya ke view
-        return view('landing.landing', compact('content', 'body','setting','events','teams','contact'));
+        return view('landing.informasi', compact('content', 'body','setting','events','teams','contact'));
          
     }
 
@@ -57,7 +59,7 @@ class LandingPageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Infromasi $infromasi)
     {
         //
     }
@@ -65,7 +67,7 @@ class LandingPageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Infromasi $infromasi)
     {
         //
     }
@@ -73,7 +75,7 @@ class LandingPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Infromasi $infromasi)
     {
         //
     }
@@ -81,7 +83,7 @@ class LandingPageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Infromasi $infromasi)
     {
         //
     }

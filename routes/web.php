@@ -17,6 +17,7 @@ use App\Models\Setting;
 use App\Models\Logo;
 use App\Models\Event;
 use App\Models\Teams;
+use App\Models\Contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +32,31 @@ use App\Models\Teams;
 
 Route::get('blog', function () {
     return view('landing.blog');
-})->name('blog');;
+})->name('blog');
+
+
 
 Route::get('404', function () {
     return view('landing.404');
-})->name('404');;
+})->name('404');
 // Route::get('/login', function () {
 //     return view('auth.auth-login2');
 // });
 
+Route::get('/informasi', function () {
+    $content = Content::latest()->first();
+    $menus = Menu::orderBy('order')->get();
+    $body = Body::latest()->first();
+    $logo = Setting::first();
+    $teams = Teams::latest()->get();
+    $contact = Contact::first();
+    $events= Event::where('is_published', true)
+        ->latest()
+        ->get();
+
+
+    return view('landing.informasi', compact('content', 'menus','body','logo','events','teams','contact'));
+})->name('informasi');
 
 // Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 
@@ -49,12 +66,13 @@ Route::get('/', function () {
     $body = Body::latest()->first();
     $logo = Setting::first();
     $teams = Teams::latest()->get();
+    $contact = Contact::first();
     $events= Event::where('is_published', true)
         ->latest()
         ->get();
 
 
-    return view('landing.landing', compact('content', 'menus','body','logo','events','teams'));
+    return view('landing.landing', compact('content', 'menus','body','logo','events','teams','contact'));
 })->name('landing');
 // Route::get('landing', [LandingPageController::class, 'index'])->name('landing');
 // Admin CMS (bisa ditambah middleware auth)

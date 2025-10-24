@@ -1,46 +1,100 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Konten</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-50 p-10">
-    <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
-        <h1 class="text-2xl font-semibold mb-4">Edit Konten</h1>
+@extends('layouts dashboard.app')
 
-        {{-- Notifikasi error --}}
-        @if ($errors->any())
-            <div class="bg-red-100 text-red-800 p-3 mb-4 rounded">
-                <ul class="list-disc ml-5">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+@section('title', 'Edit Konten')
+
+@push('style')
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
+@endpush
+
+@section('main')
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>Edit Konten</h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('content.index') }}">Konten</a></div>
+                <div class="breadcrumb-item active">Edit Konten</div>
             </div>
-        @endif
+        </div>
 
-        <form action="{{ route('content.update', $content->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+        <div class="section-body">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Form Edit Konten</h4>
+                </div>
 
-            <label class="block mb-2 font-semibold">Judul</label>
-            <input type="text" name="title" value="{{ old('title', $content->title) }}" class="w-full p-2 border rounded mb-4">
+                <div class="card-body">
 
-            <label class="block mb-2 font-semibold">Deskripsi</label>
-            <textarea name="description" class="w-full p-2 border rounded mb-4" rows="4">{{ old('description', $content->description) }}</textarea>
+                    {{-- Notifikasi error --}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <div class="alert-title">Terjadi Kesalahan</div>
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-            <label class="block mb-2 font-semibold">Gambar</label>
-            @if($content->image)
-                <img src="{{ asset('storage/'.$content->image) }}" alt="Preview" class="w-40 rounded mb-3">
-            @endif
+                    <form action="{{ route('content.update', $content->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
-            <input type="file" name="image" class="mb-4 block">
+                        <div class="form-group">
+                            <label>Judul</label>
+                            <input type="text" 
+                                   name="title" 
+                                   value="{{ old('title', $content->title) }}" 
+                                   class="form-control @error('title') is-invalid @enderror">
+                            @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Simpan Perubahan
-            </button>
-        </form>
-    </div>
-</body>
-</html>
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            <textarea name="description" rows="4" 
+                                      class="form-control @error('description') is-invalid @enderror">{{ old('description', $content->description) }}</textarea>
+                            @error('description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gambar</label><br>
+                            @if($content->image)
+                                <img src="{{ asset('storage/'.$content->image) }}" 
+                                     alt="Preview" 
+                                     class="img-thumbnail mb-3" 
+                                     style="max-width: 200px;">
+                            @endif
+                            <input type="file" 
+                                   name="image" 
+                                   class="form-control @error('image') is-invalid @enderror">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Simpan Perubahan
+                            </button>
+                            <a href="{{ route('content.index') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Kembali
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@endsection
+
+@push('scripts')
+    <!-- JS Libraries -->
+    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
+@endpush
