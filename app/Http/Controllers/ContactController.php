@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Tampilkan semua data kontak.
      */
     public function index()
     {
@@ -17,104 +17,92 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Form tambah kontak.
      */
     public function create()
     {
-        
         return view('admin.contact.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Simpan data kontak baru.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'phone' => 'required|string|max:50',
-        'alamat' => 'nullable|string|max:255',
-        'facebook' => 'nullable|url|max:255',
-        'instagram' => 'nullable|url|max:255',
-        'x' => 'nullable|url|max:255',
-        'tiktok' => 'nullable|url|max:255',
-        'youtube' => 'nullable|url|max:255',
-    ]);
-
-    $sosmed = [
-        'facebook' => $request->facebook,
-        'instagram' => $request->instagram,
-        'x' => $request->x,
-        'tiktok' => $request->tiktok,
-        'youtube' => $request->youtube,
-    ];
-
-    Contact::create([
-        'phone' => $request->phone,
-        'alamat' => $request->alamat,
-        'sosmed' => json_encode($sosmed), // simpan dalam format JSON
-    ]);
-
-    return redirect()->route('contact.index')->with('success', 'Kontak berhasil ditambahkan!');
-}
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Contact $contact)
     {
-        //
+        $validated = $request->validate([
+            'phone' => 'required|string|max:50',
+            'alamat' => 'nullable|string|max:255',
+            'facebook' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
+            'x' => 'nullable|url|max:255',
+            'tiktok' => 'nullable|url|max:255',
+            'youtube' => 'nullable|url|max:255',
+        ]);
+
+        $sosmed = collect($validated)
+            ->only(['facebook', 'instagram', 'x', 'tiktok', 'youtube'])
+            ->filter() // hapus null/empty
+            ->toArray();
+
+        Contact::create([
+            'phone' => $validated['phone'],
+            'alamat' => $validated['alamat'] ?? null,
+            'sosmed' => $sosmed, // cukup array, Laravel akan otomatis encode ke JSON
+        ]);
+
+        return redirect()
+            ->route('contact.index')
+            ->with('success', 'Kontak berhasil ditambahkan!');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Form edit kontak.
      */
     public function edit(Contact $contact)
     {
-         return view('admin.contact.edit', compact('contact'));
+        return view('admin.contact.edit', compact('contact'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update data kontak.
      */
     public function update(Request $request, Contact $contact)
-{
-    $request->validate([
-        'phone' => 'required|string|max:50',
-        'alamat' => 'nullable|string|max:255',
-        'facebook' => 'nullable|url|max:255',
-        'instagram' => 'nullable|url|max:255',
-        'x' => 'nullable|url|max:255',
-        'tiktok' => 'nullable|url|max:255',
-        'youtube' => 'nullable|url|max:255',
-    ]);
+    {
+        $validated = $request->validate([
+            'phone' => 'required|string|max:50',
+            'alamat' => 'nullable|string|max:255',
+            'facebook' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
+            'x' => 'nullable|url|max:255',
+            'tiktok' => 'nullable|url|max:255',
+            'youtube' => 'nullable|url|max:255',
+        ]);
 
-    $sosmed = [
-        'facebook' => $request->facebook,
-        'instagram' => $request->instagram,
-        'x' => $request->x,
-        'tiktok' => $request->tiktok,
-        'youtube' => $request->youtube,
-    ];
+        $sosmed = collect($validated)
+            ->only(['facebook', 'instagram', 'x', 'tiktok', 'youtube'])
+            ->filter()
+            ->toArray();
 
-    $contact->update([
-        'phone' => $request->phone,
-        'alamat' => $request->alamat,
-        'sosmed' => json_encode($sosmed),
-    ]);
+        $contact->update([
+            'phone' => $validated['phone'],
+            'alamat' => $validated['alamat'] ?? null,
+            'sosmed' => $sosmed,
+        ]);
 
-    return redirect()->route('contact.index')->with('success', 'Kontak berhasil diperbarui!');
-}
+        return redirect()
+            ->route('contact.index')
+            ->with('success', 'Kontak berhasil diperbarui!');
+    }
 
-
-    
     /**
-     * Remove the specified resource from storage.
+     * Hapus data kontak.
      */
     public function destroy(Contact $contact)
     {
-          $contact->delete();
+        $contact->delete();
 
-        return redirect()->route('contact.index')
+        return redirect()
+            ->route('contact.index')
             ->with('success', 'Data kontak berhasil dihapus!');
     }
 }

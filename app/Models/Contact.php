@@ -13,4 +13,8 @@ class Contact extends Model
         'alamat',
         'sosmed',
     ];
+
+     protected $casts = [
+        'sosmed' => 'array',
+    ];
 }

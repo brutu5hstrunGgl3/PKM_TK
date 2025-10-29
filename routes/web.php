@@ -9,6 +9,8 @@ use App\Http\Controllers\LogoController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\ContactController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use Illuminate\Http\Request;
 
 use App\Models\Content;
 use App\Models\Menu;
@@ -30,9 +32,17 @@ use App\Models\Contact;
 |
 */
 
-Route::get('blog', function () {
-    return view('landing.blog');
-})->name('blog');
+Route::get('pendaftaran', function () {
+    $menus = Menu::orderBy('order')->get();
+    $content = Content::latest()->first();
+    $body = Body::latest()->first();
+    $logo = Setting::first();
+    $teams = Teams::latest()->get();
+    $contact = Contact::first();
+    $events = Event::where('is_published', true)->latest()->get();
+
+    return view('landing.blog', compact('menus', 'content', 'body', 'logo', 'teams', 'contact', 'events'));
+})->name('pendaftaran');
 
 
 
@@ -77,7 +87,10 @@ Route::get('/', function () {
 // Route::get('landing', [LandingPageController::class, 'index'])->name('landing');
 // Admin CMS (bisa ditambah middleware auth)
 
-
+ Route::get('/secure-admin-login', function () {
+    session(['allow_login' => true]); // Beri izin sementara
+    return redirect('/login');
+})->name('secure.login');
 Route::middleware('admin.area')->group(function () {
     Route::get('home', function () {
         return view('dashboard.index');
@@ -93,6 +106,13 @@ Route::middleware('admin.area')->group(function () {
     Route::resource('events', EventController::class)->except(['show']);
     Route::resource( 'teams', TeamsController::class );
     Route::resource('contact', ContactController::class );
+});
+Route::get('/logout', function () {
+    return response()->view('landing.404', [], 404);
+    
+});
+Route::get('/reset-password', function () {
+    return response()->view('landing.404', [], 404);
 });
 
 

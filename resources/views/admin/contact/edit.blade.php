@@ -61,7 +61,7 @@
                                 {{-- Sosial Media --}}
                                 @php
                                     // Ambil data sosial media dari JSON
-                                    $sosmed = json_decode($contact->sosmed, true) ?? [];
+                                    $sosmed = $contact->sosmed;
                                 @endphp
 
                                 <div class="border rounded p-3 mb-3">
@@ -72,7 +72,7 @@
                                         <input type="url" 
                                                name="facebook" 
                                                id="facebook" 
-                                               value="{{ old('facebook', $sosmed['facebook'] ?? '') }}" 
+                                               value="{{ $contact->sosmed['facebook'] ?? '' }}" 
                                                class="form-control @error('facebook') is-invalid @enderror" 
                                                placeholder="https://facebook.com/username">
                                         @error('facebook')
@@ -85,7 +85,7 @@
                                         <input type="url" 
                                                name="instagram" 
                                                id="instagram" 
-                                               value="{{ old('instagram', $sosmed['instagram'] ?? '') }}" 
+                                               value="{{ $contact->sosmed['instagram'] ?? '' }}" 
                                                class="form-control @error('instagram') is-invalid @enderror" 
                                                placeholder="https://instagram.com/username">
                                         @error('instagram')
@@ -94,14 +94,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="x">X (Twitter)</label>
+                                        <label for="youtube">Youtube</label>
                                         <input type="url" 
-                                               name="x" 
-                                               id="x" 
-                                               value="{{ old('x', $sosmed['x'] ?? '') }}" 
-                                               class="form-control @error('x') is-invalid @enderror" 
-                                               placeholder="https://x.com/username">
-                                        @error('x')
+                                               name="youtube" 
+                                               id="youtube" 
+                                               value="{{ $contact->sosmed['youtube'] ?? '' }}" 
+                                               class="form-control @error('youtube') is-invalid @enderror" 
+                                               placeholder="https://youtube.com/username">
+                                        @error('youtube')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -111,7 +111,7 @@
                                         <input type="url" 
                                                name="tiktok" 
                                                id="tiktok" 
-                                               value="{{ old('tiktok', $sosmed['tiktok'] ?? '') }}" 
+                                               value="{{ $contact->sosmed['tiktok'] ?? '' }}" 
                                                class="form-control @error('tiktok') is-invalid @enderror" 
                                                placeholder="https://tiktok.com/@username">
                                         @error('tiktok')

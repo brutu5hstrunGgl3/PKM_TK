@@ -88,14 +88,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="x">X (Twitter)</label>
+                                        <label for="youtube">Youtube</label>
                                         <input type="url" 
-                                               name="x" 
-                                               id="x" 
-                                               value="{{ old('x') }}" 
-                                               class="form-control @error('x') is-invalid @enderror" 
-                                               placeholder="https://x.com/username">
-                                        @error('x')
+                                               name="youtube" 
+                                               id="youtube" 
+                                               value="{{ old('youtube') }}" 
+                                               class="form-control @error('youtube') is-invalid @enderror" 
+                                               placeholder="https://youtube.com/username">
+                                        @error('youtube')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

@@ -63,11 +63,20 @@
                                                 <td>{{ $contact->phone }}</td>
                                                 <td>{{ $contact->alamat ?? '-' }}</td>
                                                 <td>
-                                                    @if ($contact->sosmed)
-                                                        <a href="{{ $contact->sosmed }}" target="_blank">{{ $contact->sosmed }}</a>
-                                                    @else
-                                                        <span class="text-muted">Tidak ada</span>
-                                                    @endif
+                                                    @if (!empty($contact->sosmed))
+                                                    <div class="footer-icon d-flex justify-content-center">
+                                                        @foreach ($contact->sosmed as $platform => $url)
+                                                            @if (!empty($url))
+                                                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"
+                                                                href="{{ $url }}" target="_blank" title="{{ ucfirst($platform) }}">
+                                                                    <i class="fab fa-{{ $platform == 'x' ? 'youtube' : $platform }}"></i>
+                                                                </a>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                @else
+                                                    <span class="text-muted">Tidak ada sosial media tersedia.</span>
+                                                @endif
                                                 </td>
                                                 <td>{{ $contact->created_at->format('d M Y H:i') }}</td>
                                                 <td>{{ $contact->updated_at->format('d M Y H:i') }}</td>

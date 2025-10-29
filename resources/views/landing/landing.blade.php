@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Tk Harapan Ibu</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="icon"  href="{{ asset('storage/' . e($logo->logo)) }}" type="image/x-icon">
+    <link rel="icon"  href="" type="image/x-icon">
     
 
     <!-- Google Web Fonts -->
@@ -145,7 +145,7 @@
                     <p class="text-dark mb-4">
                         {{ e($body->content ?? $body->description ?? 'Lorem Ipsum is simply dummy text...') }}
                     </p>
-                    <a href="{{ route('blog') }}" class="btn btn-primary px-5 py-3 btn-border-radius">Daftar</a>
+                    <a href="{{ route('pendaftaran') }}" class="btn btn-primary px-5 py-3 btn-border-radius">Daftar</a>
                 </div>
             </div>
         </div>
@@ -260,15 +260,23 @@
                                 {{ e($contact->phone ?? '-') }}
                             </p>
                             <div class="footer-icon d-flex justify-content-center">
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="#"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="#"><i
-                                        class="fab fa-youtube"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="#"><i
-                                        class="fab fa-instagram"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle text-white" href="#"><i
-                                        class="fab fa-tiktok"></i></a>
-                            </div>
+                            @php
+                                $icons = ['facebook', 'instagram', 'tiktok', 'youtube'];
+                            @endphp
+
+                            @foreach ($icons as $platform)
+                                @php
+                                    $url = $contact->sosmed[$platform] ?? null;
+                                @endphp
+
+                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white {{ empty($url) ? 'disabled opacity-50' : '' }}"
+                                href="{{ $url ? e($url) : '#' }}"
+                                target="_blank"
+                                title="{{ ucfirst($platform) }}">
+                                    <i class="fab fa-{{ $platform == 'x' ? 'youtube' : e($platform) }}"></i>
+                                </a>
+                            @endforeach
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -282,7 +290,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3 mb-md-0">
                     <span><i class="fas fa-copyright text-light me-2"></i>
-                        Tk Harapan Ibu | Powered by Universitas Panca Sakti Bekasi {{ date('Y') }}</span>
+                        Tk Harapan Ibu | Powered by Universitas Panca Sakti Bekasi | {{ date('Y') }}</span>
                 </div>
                 <!-- <div class="col-md-6 text-md-end">
                     Designed by <a href="https://htmlcodex.com" class="border-bottom text-light">HTML Codex</a>
