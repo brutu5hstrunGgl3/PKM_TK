@@ -51,28 +51,28 @@ class FortifyServiceProvider extends ServiceProvider
         // Fortify::loginView(function () {
         //         return view('auth.auth-login2');
         //     });
-//     Fortify::loginView(function () {
-//     // Simpan flag di session saat pengguna buka /secure-admin-login
-//     if (session('allow_login') !== true) {
-//         abort(404) ;
-//     }
-
-//     // Hapus flag agar tidak bisa diakses ulang tanpa /secure-admin-login
-//     session()->forget('allow_login');
-
-//     return view('auth.auth-login2');
-// });
-Fortify::loginView(function () {
-    // Jika user tidak datang dari /secure-admin-login, arahkan ke halaman 404 custom
+    Fortify::loginView(function () {
+    // Simpan flag di session saat pengguna buka /secure-admin-login
     if (session('allow_login') !== true) {
-        return response()->view('landing.404', [], 404);
+         return response()->view('landing.404', [], 404);
     }
 
-    // Hapus izin supaya /login tidak bisa diakses lagi tanpa lewat /secure-admin-login
+    // Hapus flag agar tidak bisa diakses ulang tanpa /secure-admin-login
     session()->forget('allow_login');
 
     return view('auth.auth-login2');
 });
+// Fortify::loginView(function () {
+//     // Jika user tidak datang dari /secure-admin-login, arahkan ke halaman 404 custom
+//     if (session('allow_login') !== true) {
+//         return response()->view('landing.404', [], 404);
+//     }
+
+//     // Hapus izin supaya /login tidak bisa diakses lagi tanpa lewat /secure-admin-login
+//     session()->forget('allow_login');
+
+//     return view('auth.auth-login2');
+// });
     
      Fortify::requestPasswordResetLinkView(function () {
             return view('auth.auth-forgot-password');

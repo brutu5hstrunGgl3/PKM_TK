@@ -41,7 +41,7 @@
                                 <option value="">-- Pilih URL --</option>
                                 <option value="{{ route('landing') }}" {{ old('url') == route('landing') ? 'selected' : '' }}>Landing Page</option>
                                 <option value="/tentang-kami" {{ old('url') == '/infromasi' ? 'selected' : '' }}>Informasi </option>
-                                <option value="pendaftaran" {{ route('pendaftaran') == old('url') ? 'selected' : '' }}>Pendaftaran</option>
+                                <option value="{{route('/daftar')}}" {{ old('url') == '/daftar' ? 'selected' : '' }}> Pendaftaran</option>
                             </select>
                             @error('url')
                                 <div class="invalid-feedback">{{ $message }}</div>

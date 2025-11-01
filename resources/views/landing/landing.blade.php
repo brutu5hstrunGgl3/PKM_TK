@@ -145,7 +145,7 @@
                     <p class="text-dark mb-4">
                         {{ e($body->content ?? $body->description ?? 'Lorem Ipsum is simply dummy text...') }}
                     </p>
-                    <a href="{{ route('pendaftaran') }}" class="btn btn-primary px-5 py-3 btn-border-radius">Daftar</a>
+                    <a href="" class="btn btn-primary px-5 py-3 btn-border-radius">Daftar</a>
                 </div>
             </div>
         </div>

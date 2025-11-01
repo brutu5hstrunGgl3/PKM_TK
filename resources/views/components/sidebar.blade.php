@@ -39,6 +39,10 @@
                         <a class="nav-link"
                             href="{{ route('contact.index') }}">Contact</a>
                     </li>
+                    <li class=>
+                        <a class="nav-link"
+                            href="{{ route('pendaftaran.index') }}">Pendaftaran</a>
+                    </li>
                 </ul>
             </li>
     </aside>

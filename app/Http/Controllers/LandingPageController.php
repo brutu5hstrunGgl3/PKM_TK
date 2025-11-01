@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Setting;
 use App\Models\Event;
 use App\Models\Teams;
+use App\Models\Daftar;
 
 class LandingPageController extends Controller
 {
@@ -32,6 +33,7 @@ class LandingPageController extends Controller
         $teams = Teams::latest()->get();
 
         $contact = Contact::first();
+        
 
         // Kirim keduanya ke view
         return view('landing.landing', compact('content', 'body','setting','events','teams','contact'));

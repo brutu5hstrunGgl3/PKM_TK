@@ -12,7 +12,8 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        //
+         $daftars = Daftar::latest()->get(); // ambil semua data
+         return view('admin.daftar.index', compact('daftars'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.daftar.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validated = $request->validate([
+        'judul' => 'nullable|string|max:255',
+        'deskripsi' => 'nullable|string',
+        'link_form' => 'required|url',
+        ]);
+
+        Daftar::create($validated);
+
+        return redirect()->back()->with('success', 'Link Google Form berhasil disimpan!');
     }
 
     /**
@@ -44,7 +53,7 @@ class PendaftaranController extends Controller
      */
     public function edit(Daftar $daftar)
     {
-        //
+        return view('admin.daftar.edit', compact('daftar'));
     }
 
     /**
@@ -52,7 +61,15 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, Daftar $daftar)
     {
-        //
+        $validated = $request->validate([
+            'judul' => 'nullable|string|max:255',
+            'deskripsi' => 'nullable|string',
+            'link_form' => 'required|url',
+        ]);
+
+        $daftar->update($validated);
+
+        return redirect()->route('pendaftaran.index')->with('success', 'Link Google Form berhasil diperbarui!');
     }
 
     /**
@@ -60,6 +77,11 @@ class PendaftaranController extends Controller
      */
     public function destroy(Daftar $daftar)
     {
-        //
+        $daftar->delete();
+
+    // Redirect kembali ke halaman index dengan pesan sukses
+    return redirect()
+        ->route('pendaftaran.index')
+        ->with('success', 'Data pendaftaran berhasil dihapus.');
     }
 }
