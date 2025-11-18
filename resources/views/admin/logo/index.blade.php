@@ -13,7 +13,12 @@
 
             {{-- ✅ Notifikasi sukses --}}
             @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             @endif
 
             {{-- ✅ Kartu Upload Logo --}}
@@ -61,34 +66,40 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
-                                   
                                     <th>Preview Logo</th>
-    
                                     <th>Tanggal Upload</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
-                          <tbody>
-   <tbody>
-    @if ($logo)
-        <tr class="align-middle text-center">
-            <td>
-                @if ($logo->logo)
-                    <img src="{{ asset('storage/' . $logo->logo) }}" 
-                         alt="Logo" width="100" class="rounded">
-                @else
-                    <span class="text-gray-500">Tidak ada gambar</span>
-                @endif
-            </td>
-            <td>{{ $logo->created_at ? $logo->created_at->format('d M Y H:i') : '-' }}</td>
-        </tr>
-    @else
-        <tr>
-            <td colspan="2" class="text-center text-muted">Belum ada logo yang diunggah.</td>
-        </tr>
-    @endif
-</tbody>
 
-
+                            <tbody>
+                                @if ($logo && $logo->logo)
+                                    <tr class="align-middle text-center">
+                                        <td>
+                                            <img src="{{ asset('storage/' . $logo->logo) }}" 
+                                                 alt="Logo" width="100" class="rounded shadow-sm">
+                                        </td>
+                                        <td>{{ $logo->created_at ? $logo->created_at->format('d M Y H:i') : '-' }}</td>
+                                        <td>
+                                            {{-- Tombol Hapus Logo --}}
+                                            <form action="{{ route('logo.destroy', $logo->id) }}" 
+                                                  method="POST" 
+                                                  onsubmit="return confirm('Yakin ingin menghapus logo ini?')"
+                                                  class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td colspan="3" class="text-center text-muted">Belum ada logo yang diunggah.</td>
+                                    </tr>
+                                @endif
+                            </tbody>
                         </table>
                     </div>
                 </div>

@@ -29,4 +29,20 @@ class LogoController extends Controller
 
     return back()->with('success', 'Logo berhasil diunggah!');
     }
+
+    public function destroy($id)
+{
+    // Ambil data setting berdasarkan ID
+    $setting = Setting::findOrFail($id);
+
+    // Hapus file logo dari storage jika ada
+    if ($setting->logo && Storage::disk('public')->exists($setting->logo)) {
+        Storage::disk('public')->delete($setting->logo);
+    }
+
+    // Hapus data dari database
+    $setting->delete();
+
+    return back()->with('success', 'Logo berhasil dihapus!');
+}
 }

@@ -93,10 +93,8 @@ Route::middleware('admin.area')->group(function () {
     Route::resource('content', ContentController::class);
     Route::resource('menu', MenuController::class);
     Route::resource('body', BodyController::class);
-
-    Route::get('logo', [LogoController::class, 'index'])->name('logo.index');
     Route::post('logo/update', [LogoController::class, 'update'])->name('logo.update');
-
+    Route::resource('logo', LogoController::class)->only(['index', 'store', 'destroy']);
     Route::resource('events', EventController::class)->except(['show']);
     Route::resource( 'teams', TeamsController::class );
     Route::resource('contact', ContactController::class );
